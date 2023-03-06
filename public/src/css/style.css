@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+.container-login{
+    background-image: url('../img/Group\ 70s.svg');
+    background-repeat: no-repeat;
+    height: 100vh;
+    background-position-y:-190px ;
+    padding: 20px 50px;
+}
+.inner-login{
+    display: flex;
+
+}
+.inner-login .left-login{
+    color: #005898;
+    padding: 0 50px;
+}
+.inner-login .left-login img{
+    scale: 0.8;
+    margin-top: -50px;
+    margin-left: -150px;
+}
+.container-form{
+    background-color: #fff;
+    padding: 50px;
+    border-radius:40px ;
+    width: 450px;
+    height: 590px;
+    box-shadow: 0px 12px 24px 0 rgba(0,0,0,0.16);
+    
+}
+.container-form input[type=text]{
+    width: 100%;
+    border-radius: 9px;
+    height: 50px;
+    padding: 0 15px;
+    border-color: rgba(128, 128, 128, 1);
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+#sign{
+    margin-bottom: 30px;
+}
+input[type=password]{
+    border: none;
+    width: 80%;
+    height: 45px;
+    outline: none;
+}
+.password{
+    border: 2px solid rgba(128, 128, 128, 1);
+    border-radius: 9px;
+    height: 50px;
+    padding: 0 15px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.password > img{
+    margin: 10px;
+    scale: 0.8;
+    float: right;
+}
+input[type=submit]{
+    width: 100%;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    background-color:#0089ED;
+    color: #fff;
+    box-shadow: 0px 4px 19px 0 rgba(119, 147, 65, 0.3);
+    margin-top: 50px;
+    cursor: pointer;
+}
+#det-loc{
+    width: 450px;
+    font-weight: 400;
+}
+#judul-bawah{
+    font-weight: 600;
+    margin-top: -20px;
+}
+#judul-atas{
+    font-weight: 500;
+    font-size: 22px;
+}

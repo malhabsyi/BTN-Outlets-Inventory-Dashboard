@@ -1,0 +1,260 @@
+body {
+  margin: 0;
+  line-height: normal;
+}
+.popup-overlay {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+.group-child50 {
+  position: absolute;
+  top: 542px;
+  left: 0;
+  background-color: var(--background-paper);
+  width: 1920px;
+  height: 538px;
+}
+.rectangle-parent40,
+.warna-atas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1920px;
+}
+.warna-atas {
+  background-color: var(--color-gold-200);
+  height: 540px;
+}
+.rectangle-parent40 {
+  height: 1080px;
+}
+.pngtreeofficer-fnancial-audit {
+  position: absolute;
+  top: 302px;
+  left: 28px;
+  width: 932px;
+  height: 521px;
+  object-fit: cover;
+}
+.sign-in-form-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 40px;
+  background-color: var(--background-paper);
+  width: 648px;
+  height: 890.85px;
+}
+.hello-admin,
+.sign-in {
+  position: absolute;
+  top: 82.9px;
+  left: 70px;
+  font-size: 21px;
+  display: inline-block;
+  width: 151.48px;
+  height: 38.47px;
+}
+.sign-in {
+  top: 122.57px;
+  font-size: 55px;
+  font-weight: 600;
+  width: 218.81px;
+  height: 99.78px;
+}
+.enter-your-username,
+.username-child {
+  position: absolute;
+  top: -2.17%;
+  left: 0;
+}
+.username-child {
+  height: 61.96%;
+  width: 100%;
+  top: 38.04%;
+  right: 0;
+  bottom: 0;
+  border-radius: var(--br-4xs);
+  background-color: var(--background-paper);
+  border: 1px solid var(--color-gray-3000);
+  box-sizing: border-box;
+  font-size: 20px;
+  padding: 0px 20px;
+}
+.username-or-email {
+  position: absolute;
+  height: 20.65%;
+  width: 66.96%;
+  top: 58.7%;
+  left: 5.54%;
+  font-size: var(--font-size-sm);
+  font-weight: 300;
+  color: var(--color-gray-3000);
+  display: inline-block;
+}
+.username {
+  position: absolute;
+  top: 240.45px;
+  left: 52.9px;
+  width: 542.2px;
+  height: 110.6px;
+}
+.password-child10 {
+  position: absolute;
+  height: 61.96%;
+  width: 100%;
+  top: 38.04%;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: var(--br-4xs);
+  background-color: var(--background-paper);
+  border: 1px solid #adadad;
+  box-sizing: border-box;
+  font-size: 20px;
+  padding: 0px 20px;
+}
+.password20 {
+  position: absolute;
+  top: 376.73px;
+  left: 52.9px;
+  width: 542.2px;
+  height: 110.6px;
+}
+#akariconseyeopen {
+  position: absolute;
+  top: calc(50% - -11.58px);
+  left: 500px;
+  width: 28.85px;
+  height: 28.85px;
+  /* overflow: hidden; */
+}
+.tombol-sign-in-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: var(--br-3xs);
+  background-color: var(--color-violet-200);
+  box-shadow: 0 4px 19px rgba(119, 147, 65, 0.3);
+  width: 542.2px;
+  height: 64.92px;
+}
+.sign-in1 {
+  position: absolute;
+  top: 17.29px;
+  left: 224.1px;
+  font-weight: 500;
+  display: inline-block;
+  width: 94px;
+  height: 29px;
+}
+.tombol-sign-in {
+  position: absolute;
+  top: 578.71px;
+  left: 52.9px;
+  width: 542.2px;
+  height: 64.92px;
+  text-align: center;
+  color: var(--background-paper);
+}
+.sign-in-form {
+  position: absolute;
+  top: 95px;
+  left: 1077px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  width: 648px;
+  height: 890.85px;
+  color: var(--color-black);
+}
+.btn-outlet {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.btn-outlet-wrapper,
+.login-page-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 270px;
+  height: 75px;
+}
+.login-page-inner {
+  top: 143px;
+  left: 124px;
+  font-size: 50px;
+}
+.kantor-wilayah-iii {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-weight: 500;
+}
+.kantor-wilayah-iii-surabaya-wrapper,
+.login-page-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 489px;
+  height: 53px;
+}
+.login-page-child {
+  top: 201px;
+  left: 124px;
+  font-size: var(--font-size-8xl);
+}
+.jl-pemuda-no50 {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+.kota-surabaya-jawa {
+  margin: 0;
+}
+.jl-pemuda-no50-container,
+.kantor-wilayah-iii1 {
+  position: absolute;
+  top: 46px;
+  left: 0;
+  display: inline-block;
+  width: 515px;
+  height: 53px;
+}
+.kantor-wilayah-iii1 {
+  top: 0;
+  font-size: var(--font-size-4xl);
+  font-weight: 600;
+  width: 650px;
+  height: 21px;
+}
+.alamat-kantor {
+  position: absolute;
+  top: 895px;
+  left: 99px;
+  width: 650px;
+  height: 99px;
+  font-size: var(--font-size-sm);
+}
+.logo-btn-113 {
+  position: absolute;
+  top: 40px;
+  left: 69px;
+  width: 165px;
+  height: 47px;
+  object-fit: cover;
+}
+.login-page {
+  position: relative;
+  background-color: var(--background-paper);
+  width: 100%;
+  height: 1080px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--font-size-base);
+  color: var(--color-gray-3600);
+  font-family: var(--font-poppins);
+}

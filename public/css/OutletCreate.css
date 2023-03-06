@@ -1,0 +1,513 @@
+body {
+  margin: 0;
+  line-height: normal;
+}
+.popup-overlay {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+.form-pembuatan-user {
+  position: absolute;
+  top: 52px;
+  left: 2px;
+}
+.create-user,
+.dashboard {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: var(--font-size-9xl);
+  color: var(--color-gray-3600);
+}
+.dashboard {
+  top: -47px;
+  width: 441px;
+  height: 74px;
+  font-size: var(--font-size-sm);
+  color: var(--color-gray-2800);
+}
+.last-name-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: var(--br-3xs);
+  background-color: var(--color-gray-1600);
+  width: 726px;
+  height: 69px;
+  font-weight: bold;
+  font-size: 20px;
+}
+.last-name,
+.pradipta {
+  position: absolute;
+  top: 23px;
+  left: 30px;
+}
+.last-name {
+  top: 0;
+  left: 544px;
+  width: 348px;
+  height: 69px;
+}
+.naufal {
+  position: absolute;
+  top: 23px;
+  left: 26px;
+}
+.first-name,
+.nama-user {
+  position: absolute;
+  top: 0;
+  left: 166px;
+  width: 348px;
+  height: 69px;
+}
+.nama-user {
+  top: 138px;
+  width: 892px;
+}
+.email,
+.email-child,
+.email1,
+.password1 {
+  position: absolute;
+  top: 0;
+  width: 726px;
+  height: 69px;
+}
+.email-child {
+  left: 0;
+  border-radius: var(--br-3xs);
+  background-color: var(--color-gray-1600);
+  font-weight: bold;
+  color: black;
+  font-size: 20px;
+  padding: 0px 30px 0px 30px;
+}
+.email,
+.email1,
+.password1 {
+  left: 112px;
+}
+.email,
+.password1 {
+  top: 258px;
+  left: 220px;
+  width: 838px;
+}
+.password1 {
+  top: 0;
+  left: 169px;
+  width: 726px;
+}
+.password {
+  top: 375px;
+  left: 160px;
+  width: 879px;
+  height: 69px;
+}
+.nip,
+.password,
+.password3 {
+  position: absolute;
+}
+.password3 {
+  top: 0;
+  left: 106px;
+  width: 726px;
+  height: 69px;
+}
+.nip {
+  top: 20px;
+  left: 0;
+  letter-spacing: -0.02em;
+  text-align: right;
+}
+.re-enter-password {
+  position: absolute;
+  top: 495px;
+  left: 222px;
+  width: 817px;
+  height: 69px;
+}
+.kc-unair {
+  position: absolute;
+  top: 27px;
+  left: 26px;
+}
+.kantor-cabang,
+.password4 {
+  position: absolute;
+  top: 0;
+  left: 118px;
+  width: 726px;
+  height: 69px;
+}
+.kantor-cabang {
+  top: 610px;
+  left: 209px;
+  width: 933px;
+}
+.role1 {
+  position: absolute;
+  top: 1px;
+  left: 0;
+  letter-spacing: -0.02em;
+  text-align: right;
+}
+.role-child,
+.role-item {
+  position: absolute;
+  top: 0;
+  left: 100px;
+  border-radius: var(--br-3xs);
+  background-color: var(--color-gray-1600);
+  width: 35px;
+  height: 35px;
+}
+.role-item {
+  top: 50px;
+}
+.super-admin,
+.user {
+  position: absolute;
+  top: 4px;
+  left: 154px;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+.super-admin {
+  top: 56px;
+}
+.confirm-child,
+.role {
+  position: absolute;
+  top: 739px;
+  left: 232px;
+  width: 286px;
+  height: 85px;
+  
+}
+.confirm-child {
+  top: 0;
+  left: 0;
+  border-radius: var(--br-lg);
+  background-color: var(--color-gray-3600);
+  width: 305px;
+  height: 67px;
+}
+.confirm1 {
+  position: absolute;
+  top: 17px;
+  left: 94px;
+  letter-spacing: -0.02em;
+}
+.confirm,
+.go-back-icon {
+  position: absolute;
+  top: 867px;
+}
+.confirm {
+  left: 527px;
+  width: 305px;
+  height: 67px;
+  font-size: var(--font-size-5xl);
+  color: var(--background-paper);
+  top: 47rem;
+
+}
+.go-back-icon {
+  left: 15rem;
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  top: 47rem;
+
+}
+.dashboard-parent {
+  position: absolute;
+  top: 99px;
+  left: 355px;
+  width: 1509px;
+  height: 942px;
+  /* overflow-y: auto; */
+}
+.hello-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: var(--br-sm);
+  background-color: var(--color-gray-700);
+  border: 0.8px solid var(--color-gray-2100);
+  box-sizing: border-box;
+  width: 338px;
+  height: 61px;
+  opacity: 0.85;
+}
+.customer-icon,
+.hello-ananda-segaf {
+  position: absolute;
+  top: 20px;
+  left: 69px;
+}
+.customer-icon {
+  top: 11px;
+  left: 15px;
+  border-radius: var(--br-6xl);
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+.hello {
+  position: absolute;
+  top: 50px;
+  left: 1539px;
+  width: 338px;
+  height: 61px;
+  font-size: var(--font-size-sm);
+  color: var(--color-gray-4000);
+}
+.back-rect-1,
+.overview-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--background-paper);
+  width: 305px;
+  height: 1080px;
+}
+.overview-child {
+  border-radius: var(--br-5xl);
+  width: 249px;
+  height: 74px;
+  
+  
+}
+.overview1 {
+  position: absolute;
+  top: 0;
+  left: 44px;
+  letter-spacing: -0.02em;
+  display: inline-block;
+  width: 107.35px;
+}
+.iconlybolddocument {
+  position: absolute;
+  height: 100%;
+  width: 17.55%;
+  top: 0;
+  right: 82.45%;
+  bottom: 0;
+  left: 0;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.overview,
+.overview-parent {
+  position: absolute;
+  top: 25px;
+  left: 26px;
+  width: 151.35px;
+  height: 24px;
+}
+.overview {
+  top: 168px;
+  left: 40px;
+  width: 249px;
+  height: 74px;
+}
+.outlet-child,
+.user2 {
+  position: absolute;
+  top: 0;
+}
+.outlet-child {
+  left: 0;
+  border-radius: var(--br-5xl);
+  /* background-color: var(--color-gold-200); */
+  width: 249px;
+  height: 74px;
+}
+.user2 {
+  left: 44px;
+  letter-spacing: -0.02em;
+}
+.iconlyboldprofile {
+  position: absolute;
+  height: 100%;
+  width: 26.37%;
+  top: 0;
+  right: 73.63%;
+  bottom: 0;
+  left: 0;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.outlet,
+.user1 {
+  position: absolute;
+  top: 25px;
+  left: 26px;
+  width: 91px;
+  height: 24px;
+}
+.outlet {
+  top: 270px;
+  left: 40px;
+  width: 249px;
+  height: 74px;
+  
+}
+.home-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  object-fit: cover;
+}
+.kantor-cabang-parent,
+.outlet1 {
+  position: absolute;
+  top: 25px;
+  left: 26px;
+  width: 197px;
+  height: 24px;
+  color: var(--color-gray-3600);
+}
+.outlet1 {
+  top: 372px;
+  left: 40px;
+  width: 249px;
+  height: 74px;
+  
+}
+.outlet-kantor-cabang{
+  border-radius: var(--br-5xl);
+width: 249px;
+height: 74px;
+background-color: var(--color-gold-200);
+}
+.log-out1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  letter-spacing: -0.02em;
+}
+.log-out-wrapper {
+  position: absolute;
+  top: 26px;
+  left: 70px;
+  width: 78px;
+  height: 24px;
+}
+.iconlyboldlogout {
+  position: absolute;
+  height: 32.43%;
+  width: 9.64%;
+  top: 35.14%;
+  right: 79.92%;
+  bottom: 32.43%;
+  left: 10.44%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.log-out,
+.samping-child {
+  position: absolute;
+  top: 569px;
+  left: 40px;
+  width: 249px;
+  height: 74px;
+}
+.samping-child {
+  top: 543.5px;
+  left: 53.5px;
+  border-top: 1px solid var(--color-gray-1500);
+  box-sizing: border-box;
+  width: 199px;
+  height: 1px;
+}
+.logo-btn-1 {
+  position: absolute;
+  top: 66px;
+  left: 54px;
+  width: 191px;
+  height: 48px;
+  object-fit: cover;
+}
+.samping,
+.tab-super-admin {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 305px;
+  height: 1080px;
+}
+.tab-super-admin {
+  color: var(--color-gray-2400);
+}
+.user-create-user-2 {
+  position: relative;
+  background-color: var(--color-gray-300);
+  width: 100%;
+  height: 1080px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--font-size-base);
+  color: var(--color-black);
+  font-family: var(--font-montserrat);
+}
+.check-child,
+.check-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: var(--br-3xs);
+  background-color: var(--color-gray-1600);
+  width: 35px;
+  height: 35px;
+}
+.check-item {
+  top: 5px;
+  left: 5px;
+  background-color: var(--color-violet-200);
+  width: 25px;
+  height: 25px;
+}
+.check {
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  width: 35px;
+  height: 35px;
+}
+.check-box {
+  position: relative;
+  width: 35px;
+  height: 30px;
+  max-width: 90%;
+  max-height: 90%;
+  overflow: auto;
+}
+
+::placeholder {
+  color: black;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+ color: black;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+ color: black;
+}

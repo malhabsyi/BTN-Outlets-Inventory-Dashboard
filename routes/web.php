@@ -44,10 +44,7 @@ Route::middleware('guest')->group(function(){
 
 Route::group(['middleware' =>['auth','cekrole:superadmin']],function(){
     
-    //KANTOR CABANG
-    Route::get("/edit-kantor-cabang/{id}", [PageController::class, 'editKantorCabang']);
-    Route::put("/update-kantor-cabang/{id}",[PageController::class, 'updateKantorCabang']);
-    Route::post('delete-kantor-cabang/{id}',[PageController::class, 'destroyKantorCabang']);
+
 
     //ATM
     Route::get("/create-atm", [PageController::class, 'createAtm']);
@@ -62,7 +59,6 @@ Route::group(['middleware' =>['auth','cekrole:superadmin']],function(){
     Route::put("/update-item-atm/{id}", [PageController::class, 'updateItemAtm']);
 
     //DASHBOARD PENILAIAN ITEM ATM
-    Route::get("/indikator-penilaian-atm/{id}", [PageController::class, 'indikatorPenilaianAtm']);
     Route::get("/edit-indikator-penilaian-atm/{id}", [PageController::class, 'editIndikatorPenilaianAtm']);
     Route::put("/update-indikator-penilaian-atm/{id}", [PageController::class, 'updateIndikatorPenilaianAtm']);
     Route::post("/store-indikator-penilaian-atm/{id}", [PageController::class, 'storeIndikatorPenilaianAtm']);
@@ -72,7 +68,6 @@ Route::group(['middleware' =>['auth','cekrole:superadmin']],function(){
 
     //OUTLET
     //DASHBOARD OUTLET
-    Route::get("/overview-cabang/overview-outlet/{id}", [PageController::class, 'overviewOutlet']);
     Route::get("/create-outlet", [PageController::class, 'createOutlet']);
     Route::post("/store-outlet", [PageController::class, 'storeOutlet']);
     Route::get("edit-outlet/{id}", [PageController::class, 'editOutlet']);
@@ -86,7 +81,6 @@ Route::group(['middleware' =>['auth','cekrole:superadmin']],function(){
 
 
     //DASHBOARD PENILAIAN ITEM OUTLET
-    Route::get("/indikator-penilaian-outlet/{id}", [PageController::class, 'indikatorPenilaianoutlet']);
     Route::get("/edit-indikator-penilaian-outlet/{id}", [PageController::class, 'editIndikatorPenilaianoutlet']);
     Route::put("/update-indikator-penilaian-outlet/{id}", [PageController::class, 'updateIndikatorPenilaianoutlet']);
     Route::post("/store-indikator-penilaian-outlet/{id}", [PageController::class, 'storeIndikatorPenilaianoutlet']);
@@ -114,7 +108,12 @@ Route::group(['middleware' =>['auth','cekrole:superadmin']],function(){
 });
 Route::group(['middleware' =>['auth','cekrole:superadmin,admin']],function(){
 
-
+    
+    //KANTOR CABANG
+    Route::get("/edit-kantor-cabang/{id}", [PageController::class, 'editKantorCabang']);
+    Route::put("/update-kantor-cabang/{id}",[PageController::class, 'updateKantorCabang']);
+    Route::post('delete-kantor-cabang/{id}',[PageController::class, 'destroyKantorCabang']);
+    
     Route::get('/home', [HomeController::class, 'index']);
     Route::get("/", [PageController::class, 'overview']);
 
@@ -122,13 +121,18 @@ Route::group(['middleware' =>['auth','cekrole:superadmin,admin']],function(){
     Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
     //DASHBOARD KANTOR CABANG
-
     Route::get("/kantor-cabang", [PageController::class, 'kantorCabang']);
     Route::get("/overview-cabang/{id}", [PageController::class, 'overviewKantorCabang']);
   
     //ATM
     //DASHBOARD ATM
     Route::get("/overview-cabang/overview-atm/{id}", [PageController::class, 'overviewAtm']);
- 
+    Route::get("/indikator-penilaian-atm/{id}", [PageController::class, 'indikatorPenilaianAtm']);
+
+    //OUTLET
+    //DASHBOARD OUTLET
+    Route::get("/overview-cabang/overview-outlet/{id}", [PageController::class, 'overviewOutlet']);
+    Route::get("/indikator-penilaian-outlet/{id}", [PageController::class, 'indikatorPenilaianoutlet']);
+
 
 });

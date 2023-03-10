@@ -18,7 +18,12 @@
             <div class="row mb-4">
                 <label for="" class="col-md-2 text-end fw-bold py-1">Kantor Cabang</label>
                 <div class="col-md-6">
-                    <input type="text" class=" form-input" value="{{$outlet->kantorcabang->kantor_cabang_name}}" placeholder="Nama Kantor Cabang" readonly>
+                    <select id="kantor_cabang" name="kantor_cabang_id" class="form-input" required>
+                        <option value="{{$outlet->kantorcabang->id}}">Pilih Kantor Cabang</option>
+                        @foreach($kantorcabang as $kc)
+                            <option value="{{ $kc->id }}">{{ $kc->kantor_cabang_name }}</option>
+                        @endforeach
+                    </select>    
                 </div>
             </div>
             <div class="row mb-4">

@@ -151,8 +151,13 @@ class PageController extends Controller
 
     public function editOutlet($id)
     {
-        $userlogin = Auth::user();
+        $kantorcabang= KantorCabang::all();
         
+        $userlogin = Auth::user();
+        $outlet = Atm::find($id);
+
+        if (Auth::user()->role == 'superadmin' || (Auth::user()->role == 'admin' && Auth::user()->kantor_cabang_id == $outlet->kantorcabang->id)) {
+
         //NOTIFICATION
         $outletnotif = OutletBtn::where('outlet_deadline_tahun','<=',$userlogin->last_login_tahun+1)->where('outlet_status', 'sewa')->get();
         $outletnotif = OutletBtn::where('outlet_deadline_tahun','<=',$userlogin->last_login_tahun+1)->where('outlet_status', 'sewa')->get();
@@ -172,7 +177,10 @@ class PageController extends Controller
             $outletdeadline = $oldDate->format('Y-m-d');
         $status = ['sewa','milik perusahaan'];
 
-        return view('pages.edit-outlet', compact('status','outletdeadline','outlet','title','breadcrumb','userlogin','atmnotif','outletnotif'));
+        return view('pages.edit-outlet', compact('status','outletdeadline','outlet','title','breadcrumb','userlogin','atmnotif','outletnotif','kantorcabang'));
+        } else {
+            return view('page.overview');
+        }
     }
 
     public function overviewOutlet($id)
@@ -216,7 +224,8 @@ class PageController extends Controller
         $outlet->outlet_deadline_tahun = $dateParts[0];
         $outlet->outlet_deadline_bulan = $dateParts[1];
         $outlet->outlet_deadline_tanggal = $dateParts[2];
-
+        $kantorcabang= KantorCabang::all();
+        $outlet->kantor_cabang_id = $request->input('kantor_cabang_id');
 
         if ($request->hasfile('outlet_image')){
             $destination = 'uploads/outlet/'.$outlet->outlet_image;
@@ -391,7 +400,8 @@ class PageController extends Controller
 
     public function editKantorCabang($id)
     {
-        if (Auth::user()->role == 'superadmin') {
+        
+        if (Auth::user()->role == 'superadmin' || Auth::user()->role == 'admin' && Auth::user()->kantor_cabang_id == $id) {
             $userlogin = Auth::user();
         
             //NOTIFICATION
@@ -411,8 +421,46 @@ class PageController extends Controller
             ];
             return view('pages.edit-kantor-cabang',compact('outletnotif','atmnotif','userlogin','kantorcabang','title','breadcrumb'));
         } else {
-            return view('page.overview-cabang');
-        }
+            $userlogin = Auth::user();
+        
+            //NOTIFICATION
+            $outletnotif = OutletBtn::where('outlet_deadline_tahun','<=',$userlogin->last_login_tahun+1)->where('outlet_status', 'sewa')->get();
+            $outletnotif = OutletBtn::where('outlet_deadline_tahun','<=',$userlogin->last_login_tahun+1)->where('outlet_status', 'sewa')->get();
+            $atmnotif = Atm::where('atm_deadline_bulan', '>=', $userlogin->last_login_bulan)
+            ->where('atm_deadline_bulan', '<=', $userlogin->last_login_bulan+3)
+            ->where('atm_status', 'sewa')
+            ->orderBy('atm_deadline_bulan')
+            ->get();
+            $userlogin = Auth::user();
+            $kantorcabang = KantorCabang::find($id);
+            $title = "Overview Kantor Cabang";
+    
+            $breadcrumb = [
+                'page-title' => 'Overview Kantor Cabang',
+                'sub-title' => 'Overview'.' '.$kantorcabang->kantor_cabang_name,
+            ];
+            $atm = Atm::where('kantor_cabang_id',$kantorcabang->id)->get();
+            $atmcount = $atm->count();
+            $atmdeadline =[];
+            for ($i=0; $i<$atmcount; $i++) {
+                $deadline = $atm[$i]->atm_deadline_tanggal." - ".$atm[$i]->atm_deadline_bulan." - ".$atm[$i]->atm_deadline_tahun;
+                if ($atm[$i]->outlet != NULL){
+                    $deadline = $atm[$i]->outlet->outlet_deadline_tanggal." - ".$atm[$i]->outlet->outlet_deadline_bulan." - ".$atm[$i]->outlet->outlet_deadline_tahun;
+                };
+                if ($atm[$i]->atm_status == "milik perusahaan"){
+                    $deadline = " milik perusahaan ";
+                }
+                $atmdeadline[$i]=$deadline;
+                
+    
+            }
+            
+            $outlets = $kantorcabang->outlet;
+            
+    
+            return view('pages.overview-cabang',compact('atmdeadline','outletnotif','atmnotif','userlogin','outlets','title','breadcrumb','kantorcabang'));
+   
+         }
 
     }
 
@@ -530,8 +578,8 @@ class PageController extends Controller
 
     public function editAtm($id)
     {
-
-        if (Auth::user()->role == 'superadmin') {
+        $atm = Atm::find($id);
+        if (Auth::user()->role == 'superadmin' || (Auth::user()->role == 'admin' && Auth::user()->kantor_cabang_id == $atm->kantorcabang->id)) {
 
             $userlogin = Auth::user();
         
@@ -576,6 +624,7 @@ class PageController extends Controller
 
     }
     public function updateAtm(Request $request,$id){
+
         $atm = Atm::find($id);
         $atm-> atm_name = $request->input('atm_name');
         $atm-> atm_location = $request->input('atm_location');

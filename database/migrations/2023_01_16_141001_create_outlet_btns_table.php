@@ -18,6 +18,7 @@ class CreateOutletBtnsTable extends Migration
             $table->string('outlet_name');
             $table->string('outlet_location');
             $table->string('outlet_sbh');
+            $table->string('outlet_image');
             $table->integer('outlet_deadline_tahun');
             $table->integer('outlet_deadline_bulan');
             $table->integer('outlet_deadline_tanggal');

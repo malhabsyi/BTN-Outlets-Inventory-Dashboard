@@ -7,7 +7,7 @@
     <div class="col-md-8">
         <div class="overview-cabang">
             <div class="image-cabang-frame p-4">
-                <img src="../uploads/outlet/{{$outlet->outlet_image}}" alt="Foto Cabang">
+                <img src="/uploads/outlet/{{$outlet->outlet_image}}" alt="Foto Cabang">
             </div>
 
             <div class="py-5">
@@ -50,7 +50,7 @@
         
         <div class="row my-3">
             <div class="p-1">
-                <button class="accordions" style="border-bottom 1px solid #cdcdcd">List ATM/CRM Outlet Nginden Semolo</button>
+                <button class="accordions" style="border-bottom 1px solid #cdcdcd">List ATM/CRM {{$outlet->outlet_name}}</button>
                 <div class="panels">
 
                     <div class="row">
@@ -81,7 +81,7 @@
                     @endforeach
                 </div>
                 
-                <button class="accordions">List Item Outlet Nginden Semolo</button>
+                <button class="accordions">List Item Outlet {{$outlet->outlet_name}}</button>
                 <div class="panels">
                     <div class="row">
                         <a href="/create-item-outlet/{{$outlet->id}}" class="text-end my-4">Tambah Item</a>
@@ -97,7 +97,7 @@
                                     <h4>{{$item->itemoutlet_name}}</h4>
                                 </div>
                                 <div class="list-item-outlet" style="width:50%">
-                                    <a href="/indikator-penilaian-outlet/{{$item->outlet_id}}" style="color:inherit; text-decoration:none;">
+                                    <a href="/indikator-penilaian-outlet/{{$item->id}}" style="color:inherit; text-decoration:none;">
                                         <h3>Indikator Penilaian</h3>
                                         <h4>{{$item->penilaianitemoutlet->count()}} Buah</h4>
                                     </a> </div>

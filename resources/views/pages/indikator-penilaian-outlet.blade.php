@@ -22,7 +22,7 @@
                 <tbody>
                 @foreach($penilaianitemoutlet as $item)
                 <tr>
-                    <td>1</td>
+                    <td>{{ $loop->iteration }}</td>
                     <td><button class="indikator-btn" data-bs-toggle="modal" data-bs-target="#exampleModal{{$item->id}}"><img src="/uploads/penilaianitemoutlet/{{$item->penilaianitemoutlet_gambar}}" alt="Indikator" style="border-radius: 20%; overflow: hidden; width: 75px; height: 75px;"></button></td>
                     <td>{{$item->penilaianitemoutlet_name}}</td>
                     <td>Terlihat jelas, Posisi hadap ATM (Monitor tidak terkena sinar matahari)</td>
@@ -61,22 +61,7 @@
         </div>
     </div>
 </div>
-<!-- Modal Foto Outlet-->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-body  modal-upload p-5 text-center">
-          <h1>Foto Penilaian {{$item->penilaianitemoutlet_name}}</h1>
-        
-          <img src="/uploads/penilaianitemoutlet/{{$item->penilaianitemoutlet_gambar}}" alt="Foto" width="80%" class="my-5">
 
-          <div class="btn-action" style="margin-top:-30px">
-            <button class="btn-blue">Done</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
 
   <!-- Modal Foto Outlet-->

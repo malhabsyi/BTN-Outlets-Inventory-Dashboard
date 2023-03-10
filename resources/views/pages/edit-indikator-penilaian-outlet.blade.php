@@ -85,7 +85,7 @@
 
     <div class="row my-4">
         <div class="col-md-2">
-            <a href="/kantor-cabang" class="btn-go-back">
+            <a href="/indikator-penilaian-outlet/{{$itemoutlet->id}}" class="btn-go-back">
                 <img src="../img/go-back@2x.png" alt="Button Go Back" width="60" height="60">
             </a>
         </div>

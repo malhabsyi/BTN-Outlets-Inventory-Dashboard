@@ -42,25 +42,14 @@ Route::middleware('guest')->group(function(){
     Route::post('/login', [LoginController::class, 'authenticate']);
 });
 
-Route::group(['middleware' =>['auth','cekrole:superadmin,admin']],function(){
-    //LANDING PAGE
-    Route::get('/home', [HomeController::class, 'index']);
-    Route::get("/", [PageController::class, 'overview']);
-
-    //LOGOUT
-    Route::post('logout', [LoginController::class, 'logout'])->name('logout');
-
-    //DASHBOARD KANTOR CABANG
-
-    Route::get("/kantor-cabang", [PageController::class, 'kantorCabang']);
-    Route::get("/overview-cabang/{id}", [PageController::class, 'overviewKantorCabang']);
+Route::group(['middleware' =>['auth','cekrole:superadmin']],function(){
+    
+    //KANTOR CABANG
     Route::get("/edit-kantor-cabang/{id}", [PageController::class, 'editKantorCabang']);
     Route::put("/update-kantor-cabang/{id}",[PageController::class, 'updateKantorCabang']);
     Route::post('delete-kantor-cabang/{id}',[PageController::class, 'destroyKantorCabang']);
 
     //ATM
-    //DASHBOARD ATM
-    Route::get("/overview-cabang/overview-atm/{id}", [PageController::class, 'overviewAtm']);
     Route::get("/create-atm", [PageController::class, 'createAtm']);
     Route::post("/store-atm", [PageController::class, 'storeAtm']);
     Route::get("edit-atm/{id}", [PageController::class, 'editAtm']);
@@ -103,23 +92,6 @@ Route::group(['middleware' =>['auth','cekrole:superadmin,admin']],function(){
     Route::post("/store-indikator-penilaian-outlet/{id}", [PageController::class, 'storeIndikatorPenilaianoutlet']);
     Route::put("/delete-indikator-penilaian-outlet/{id}", [PageController::class, 'deleteIndikatorPenilaianoutlet']);
    
-     
-
-    
-  
-
-    // Route::get('/kantorcabang',[KantorcabangController::class, 'index'])->name('kantorcabang');
-    // Route::get('edit-kantorcabang/{id}',[KantorcabangController::class, 'edit']);
-    // Route::get('overview-kantorcabang/{id}',[KantorcabangController::class, 'overview']);
-    // Route::put('update-kantorcabang/{id}',[KantorcabangController::class, 'update']);
-    // Route::post('delete-kantorcabang/{id}',[KantorcabangController::class, 'destroy']);
-
-
-});
-Route::group(['middleware' =>['auth','cekrole:superadmin']],function(){
-
-
-
     //DASHBOARD ADMIN
     Route::get('/akun',[UserController::class, 'index'])->name('akun');
     Route::get('registrasi-form',[UserController::class, 'create'])->name('registrasi-form');
@@ -130,5 +102,33 @@ Route::group(['middleware' =>['auth','cekrole:superadmin']],function(){
 
     //ERD
     Route::get('/erd', [erd::class, 'index']);
+  
+
+    // Route::get('/kantorcabang',[KantorcabangController::class, 'index'])->name('kantorcabang');
+    // Route::get('edit-kantorcabang/{id}',[KantorcabangController::class, 'edit']);
+    // Route::get('overview-kantorcabang/{id}',[KantorcabangController::class, 'overview']);
+    // Route::put('update-kantorcabang/{id}',[KantorcabangController::class, 'update']);
+    // Route::post('delete-kantorcabang/{id}',[KantorcabangController::class, 'destroy']);
+
+
+});
+Route::group(['middleware' =>['auth','cekrole:superadmin,admin']],function(){
+
+
+    Route::get('/home', [HomeController::class, 'index']);
+    Route::get("/", [PageController::class, 'overview']);
+
+    //LOGOUT
+    Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+
+    //DASHBOARD KANTOR CABANG
+
+    Route::get("/kantor-cabang", [PageController::class, 'kantorCabang']);
+    Route::get("/overview-cabang/{id}", [PageController::class, 'overviewKantorCabang']);
+  
+    //ATM
+    //DASHBOARD ATM
+    Route::get("/overview-cabang/overview-atm/{id}", [PageController::class, 'overviewAtm']);
+ 
 
 });

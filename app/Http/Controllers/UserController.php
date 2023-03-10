@@ -33,6 +33,7 @@ class UserController extends Controller
             'page-title' => 'Overview User',
             'sub-title' => 'Overview User Kantor Wilayah III',
         ];
+        
 
         return view('user.index',compact('outletnotif','atmnotif','userlogin','user','title','breadcrumb'));
     }
@@ -119,9 +120,11 @@ class UserController extends Controller
                 'page-title' => 'Update User',
                 'sub-title' => 'Update User Kantor Wilayah III',
             ];
-    
+            
             $user = User::find($id);
-            return view('user.edit',compact('user','breadcrumb','title','kantorcabang','atmnotif','outletnotif','userlogin'));
+            $password = bcrypt($user->password);
+            
+            return view('user.edit',compact('password','user','breadcrumb','title','kantorcabang','atmnotif','outletnotif','userlogin'));
         } else {
             return view('user.index');
         }

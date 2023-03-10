@@ -65,7 +65,7 @@
                                     <h4>{{$item->itematm_name}}</h4>
                                 </div>
                                 <div class="list-item-outlet" style="width:50%">
-                                    <a href="/indikator-penilaian-atm/{{$item->atm_id}}" style="color:inherit; text-decoration:none;">
+                                    <a href="/indikator-penilaian-atm/{{$item->id}}" style="color:inherit; text-decoration:none;">
                                         <h3>Indikator Penilaian</h3>
                                         <h4>{{$item->penilaianitematm->count()}} Buah</h4>
                                     </a>

@@ -10,6 +10,10 @@ use App\Models\ItemAtm;
 use App\Models\PenilaianItemAtm;
 use App\Models\PenilaianItemOutlet;
 use App\Models\ItemOutlet;
+use App\Models\ItemDefaultAtm;
+use App\Models\PenilaianDefaultAtm;
+use App\Models\PenilaianDefaultOutlet;
+use App\Models\ItemDefaultOutlet;
 use Illuminate\Support\Facades\Auth;
 use \DateTime;
 use Illuminate\Support\Facades\File;
@@ -48,14 +52,14 @@ class PageController extends Controller
         
         //NOTIFICATION
 
-        $outletnotif = OutletBtn::where('outlet_deadline_tahun',$userlogin->last_login_tahun)->where('outlet_status', 'sewa')->get();
+        $outletnotif = OutletBtn::where('outlet_deadline_tahun','<=',$userlogin->last_login_tahun+1)->where('outlet_status', 'sewa')->get();
         $atmnotif = Atm::where('atm_deadline_bulan', '>=', $userlogin->last_login_bulan)
         ->where('atm_deadline_bulan', '<=', $userlogin->last_login_bulan+3)
         ->where('atm_status', 'sewa')
         ->orderBy('atm_deadline_bulan')
         ->get();
 
-        $persenbelumdibayar = OutletBtn::where('outlet_deadline_tahun',$userlogin->last_login_tahun)->where('outlet_status', 'sewa');
+        $persenbelumdibayar = OutletBtn::where('outlet_deadline_tahun','<=',$userlogin->last_login_tahun+1)->where('outlet_status', 'sewa');
         $persenbelumdibayar = ($persenbelumdibayar->count()/$nalloutlet)*100;
         $persenbelumdibayar = round($persenbelumdibayar);
         $persensudahdibayar = 100-$persenbelumdibayar;
@@ -77,8 +81,8 @@ class PageController extends Controller
         $userlogin = Auth::user();
         
         //NOTIFICATION
-        $outletnotif = OutletBtn::where('outlet_deadline_tahun',$userlogin->last_login_tahun)->where('outlet_status', 'sewa')->get();
-        $outletnotif = OutletBtn::where('outlet_deadline_tahun',$userlogin->last_login_tahun)->where('outlet_status', 'sewa')->get();
+        $outletnotif = OutletBtn::where('outlet_deadline_tahun','<=',$userlogin->last_login_tahun+1)->where('outlet_status', 'sewa')->get();
+        $outletnotif = OutletBtn::where('outlet_deadline_tahun','<=',$userlogin->last_login_tahun+1)->where('outlet_status', 'sewa')->get();
         $atmnotif = Atm::where('atm_deadline_bulan', '>=', $userlogin->last_login_bulan)
         ->where('atm_deadline_bulan', '<=', $userlogin->last_login_bulan+3)
         ->where('atm_status', 'sewa')
@@ -99,8 +103,8 @@ class PageController extends Controller
         $userlogin = Auth::user();
         
         //NOTIFICATION
-        $outletnotif = OutletBtn::where('outlet_deadline_tahun',$userlogin->last_login_tahun)->where('outlet_status', 'sewa')->get();
-        $outletnotif = OutletBtn::where('outlet_deadline_tahun',$userlogin->last_login_tahun)->where('outlet_status', 'sewa')->get();
+        $outletnotif = OutletBtn::where('outlet_deadline_tahun','<=',$userlogin->last_login_tahun+1)->where('outlet_status', 'sewa')->get();
+        $outletnotif = OutletBtn::where('outlet_deadline_tahun','<=',$userlogin->last_login_tahun+1)->where('outlet_status', 'sewa')->get();
         $atmnotif = Atm::where('atm_deadline_bulan', '>=', $userlogin->last_login_bulan)
         ->where('atm_deadline_bulan', '<=', $userlogin->last_login_bulan+3)
         ->where('atm_status', 'sewa')
@@ -122,8 +126,8 @@ class PageController extends Controller
         $userlogin = Auth::user();
         
         //NOTIFICATION
-        $outletnotif = OutletBtn::where('outlet_deadline_tahun',$userlogin->last_login_tahun)->where('outlet_status', 'sewa')->get();
-        $outletnotif = OutletBtn::where('outlet_deadline_tahun',$userlogin->last_login_tahun)->where('outlet_status', 'sewa')->get();
+        $outletnotif = OutletBtn::where('outlet_deadline_tahun','<=',$userlogin->last_login_tahun+1)->where('outlet_status', 'sewa')->get();
+        $outletnotif = OutletBtn::where('outlet_deadline_tahun','<=',$userlogin->last_login_tahun+1)->where('outlet_status', 'sewa')->get();
         $atmnotif = Atm::where('atm_deadline_bulan', '>=', $userlogin->last_login_bulan)
         ->where('atm_deadline_bulan', '<=', $userlogin->last_login_bulan+3)
         ->where('atm_status', 'sewa')
@@ -150,8 +154,8 @@ class PageController extends Controller
         $userlogin = Auth::user();
         
         //NOTIFICATION
-        $outletnotif = OutletBtn::where('outlet_deadline_tahun',$userlogin->last_login_tahun)->where('outlet_status', 'sewa')->get();
-        $outletnotif = OutletBtn::where('outlet_deadline_tahun',$userlogin->last_login_tahun)->where('outlet_status', 'sewa')->get();
+        $outletnotif = OutletBtn::where('outlet_deadline_tahun','<=',$userlogin->last_login_tahun+1)->where('outlet_status', 'sewa')->get();
+        $outletnotif = OutletBtn::where('outlet_deadline_tahun','<=',$userlogin->last_login_tahun+1)->where('outlet_status', 'sewa')->get();
         $atmnotif = Atm::where('atm_deadline_bulan', '>=', $userlogin->last_login_bulan)
         ->where('atm_deadline_bulan', '<=', $userlogin->last_login_bulan+3)
         ->where('atm_status', 'sewa')
@@ -176,8 +180,8 @@ class PageController extends Controller
         $userlogin = Auth::user();
         $outlet = OutletBtn::find($id);
         //NOTIFICATION
-        $outletnotif = OutletBtn::where('outlet_deadline_tahun',$userlogin->last_login_tahun)->where('outlet_status', 'sewa')->get();
-        $outletnotif = OutletBtn::where('outlet_deadline_tahun',$userlogin->last_login_tahun)->where('outlet_status', 'sewa')->get();
+        $outletnotif = OutletBtn::where('outlet_deadline_tahun','<=',$userlogin->last_login_tahun+1)->where('outlet_status', 'sewa')->get();
+        $outletnotif = OutletBtn::where('outlet_deadline_tahun','<=',$userlogin->last_login_tahun+1)->where('outlet_status', 'sewa')->get();
         $atmnotif = Atm::where('atm_deadline_bulan', '>=', $userlogin->last_login_bulan)
         ->where('atm_deadline_bulan', '<=', $userlogin->last_login_bulan+3)
         ->where('atm_status', 'sewa')
@@ -264,10 +268,7 @@ class PageController extends Controller
 
         }
 
-
-        $outlet->outlet_image = "C:\Users\muhammad\btnapp-master\public\img\upload-image.svg";
-        $outlet->save();
-        dd($outlet);
+        $outlet-> outlet_sbh = $request->input('outlet_sbh');
         if ($request->hasfile('outlet_image')){
             $destination = 'uploads/outlet/'.$outlet->outlet_image;
             if (File::exists($destination)){
@@ -279,9 +280,40 @@ class PageController extends Controller
             $file-> move('uploads/outlet/',$filename);
             $outlet->outlet_image = $filename;
         }
+        $outlet->save();
+        //REVISI
+        
+        $item = ItemDefaultOutlet::all();
+        
+        for ($i=0; $i<$item->count(); $i++) {
+            
+            $itemoutlet = new ItemOutlet;
+            $itemoutlet->itemoutlet_name = $item[$i]->itemdefaultoutlet_name;
+            $itemoutlet->outlet_id = $outlet->id;
+            // Upload the file and store the file path in the database
+            $itemoutlet->itemoutlet_image = $item[$i]->itemdefaultoutlet_image;
+            $itemoutlet->save();
+            
+            $penilaian = PenilaianDefaultOutlet::where('itemoutlet_id',$item[$i]->id)->get();
+            
+            
+            for ($j=0; $j<$penilaian->count(); $j++) {
+                $penilaianitemoutlet = new PenilaianItemOutlet;
+                $penilaianitemoutlet-> penilaianitemoutlet_name = $penilaian[$j]->penilaiandefaultoutlet_name;
+                $penilaianitemoutlet-> penilaianitemoutlet_score = 0;
+                $penilaianitemoutlet-> itemoutlet_id = $itemoutlet->id;
+                $penilaianitemoutlet-> indikator = $penilaian[$j]->penilaiandefaultoutlet_indikator;
+                $penilaianitemoutlet-> penilaianitemoutlet_gambar = $penilaian[$j]->penilaiandefaultoutlet_gambar;
+                $penilaianitemoutlet->save();
+            }
+        }
+                  
+        //REVISI
+    
+    
 
         
-        $outlet->save();
+        
         return redirect('/');
     }
 
@@ -291,8 +323,8 @@ class PageController extends Controller
         $userlogin = Auth::user();
         
         //NOTIFICATION
-        $outletnotif = OutletBtn::where('outlet_deadline_tahun',$userlogin->last_login_tahun)->where('outlet_status', 'sewa')->get();
-        $outletnotif = OutletBtn::where('outlet_deadline_tahun',$userlogin->last_login_tahun)->where('outlet_status', 'sewa')->get();
+        $outletnotif = OutletBtn::where('outlet_deadline_tahun','<=',$userlogin->last_login_tahun+1)->where('outlet_status', 'sewa')->get();
+        $outletnotif = OutletBtn::where('outlet_deadline_tahun','<=',$userlogin->last_login_tahun+1)->where('outlet_status', 'sewa')->get();
         $atmnotif = Atm::where('atm_deadline_bulan', '>=', $userlogin->last_login_bulan)
         ->where('atm_deadline_bulan', '<=', $userlogin->last_login_bulan+3)
         ->where('atm_status', 'sewa')
@@ -318,8 +350,8 @@ class PageController extends Controller
         $userlogin = Auth::user();
         
         //NOTIFICATION
-        $outletnotif = OutletBtn::where('outlet_deadline_tahun',$userlogin->last_login_tahun)->where('outlet_status', 'sewa')->get();
-        $outletnotif = OutletBtn::where('outlet_deadline_tahun',$userlogin->last_login_tahun)->where('outlet_status', 'sewa')->get();
+        $outletnotif = OutletBtn::where('outlet_deadline_tahun','<=',$userlogin->last_login_tahun+1)->where('outlet_status', 'sewa')->get();
+        $outletnotif = OutletBtn::where('outlet_deadline_tahun','<=',$userlogin->last_login_tahun+1)->where('outlet_status', 'sewa')->get();
         $atmnotif = Atm::where('atm_deadline_bulan', '>=', $userlogin->last_login_bulan)
         ->where('atm_deadline_bulan', '<=', $userlogin->last_login_bulan+3)
         ->where('atm_status', 'sewa')
@@ -363,8 +395,8 @@ class PageController extends Controller
             $userlogin = Auth::user();
         
             //NOTIFICATION
-            $outletnotif = OutletBtn::where('outlet_deadline_tahun',$userlogin->last_login_tahun)->where('outlet_status', 'sewa')->get();
-            $outletnotif = OutletBtn::where('outlet_deadline_tahun',$userlogin->last_login_tahun)->where('outlet_status', 'sewa')->get();
+            $outletnotif = OutletBtn::where('outlet_deadline_tahun','<=',$userlogin->last_login_tahun+1)->where('outlet_status', 'sewa')->get();
+            $outletnotif = OutletBtn::where('outlet_deadline_tahun','<=',$userlogin->last_login_tahun+1)->where('outlet_status', 'sewa')->get();
             $atmnotif = Atm::where('atm_deadline_bulan', '>=', $userlogin->last_login_bulan)
             ->where('atm_deadline_bulan', '<=', $userlogin->last_login_bulan+3)
             ->where('atm_status', 'sewa')
@@ -422,8 +454,8 @@ class PageController extends Controller
         $userlogin = Auth::user();
         
         //NOTIFICATION
-        $outletnotif = OutletBtn::where('outlet_deadline_tahun',$userlogin->last_login_tahun)->where('outlet_status', 'sewa')->get();
-        $outletnotif = OutletBtn::where('outlet_deadline_tahun',$userlogin->last_login_tahun)->where('outlet_status', 'sewa')->get();
+        $outletnotif = OutletBtn::where('outlet_deadline_tahun','<=',$userlogin->last_login_tahun+1)->where('outlet_status', 'sewa')->get();
+        $outletnotif = OutletBtn::where('outlet_deadline_tahun','<=',$userlogin->last_login_tahun+1)->where('outlet_status', 'sewa')->get();
         $atmnotif = Atm::where('atm_deadline_bulan', '>=', $userlogin->last_login_bulan)
         ->where('atm_deadline_bulan', '<=', $userlogin->last_login_bulan+3)
         ->where('atm_status', 'sewa')
@@ -469,8 +501,8 @@ class PageController extends Controller
                 $userlogin = Auth::user();
                 
                 //NOTIFICATION
-                $outletnotif = OutletBtn::where('outlet_deadline_tahun',$userlogin->last_login_tahun)->where('outlet_status', 'sewa')->get();
-                $outletnotif = OutletBtn::where('outlet_deadline_tahun',$userlogin->last_login_tahun)->where('outlet_status', 'sewa')->get();
+                $outletnotif = OutletBtn::where('outlet_deadline_tahun','<=',$userlogin->last_login_tahun+1)->where('outlet_status', 'sewa')->get();
+                $outletnotif = OutletBtn::where('outlet_deadline_tahun','<=',$userlogin->last_login_tahun+1)->where('outlet_status', 'sewa')->get();
                 $atmnotif = Atm::where('atm_deadline_bulan', '>=', $userlogin->last_login_bulan)
                 ->where('atm_deadline_bulan', '<=', $userlogin->last_login_bulan+3)
                 ->where('atm_status', 'sewa')
@@ -507,8 +539,8 @@ class PageController extends Controller
             $userlogin = Auth::user();
             
             //NOTIFICATION
-            $outletnotif = OutletBtn::where('outlet_deadline_tahun',$userlogin->last_login_tahun)->where('outlet_status', 'sewa')->get();
-            $outletnotif = OutletBtn::where('outlet_deadline_tahun',$userlogin->last_login_tahun)->where('outlet_status', 'sewa')->get();
+            $outletnotif = OutletBtn::where('outlet_deadline_tahun','<=',$userlogin->last_login_tahun+1)->where('outlet_status', 'sewa')->get();
+            $outletnotif = OutletBtn::where('outlet_deadline_tahun','<=',$userlogin->last_login_tahun+1)->where('outlet_status', 'sewa')->get();
             $atmnotif = Atm::where('atm_deadline_bulan', '>=', $userlogin->last_login_bulan)
             ->where('atm_deadline_bulan', '<=', $userlogin->last_login_bulan+3)
             ->where('atm_status', 'sewa')
@@ -631,8 +663,40 @@ class PageController extends Controller
             $atm->atm_image = $filename;
         }
 
+
+
         
         $atm->save();
+
+                //REVISI
+        
+                $item = ItemDefaultAtm::all();
+        
+                for ($i=0; $i<$item->count(); $i++) {
+                    
+                    $itematm = new ItemAtm;
+                    $itematm->itematm_name = $item[$i]->itemdefaultatm_name;
+                    $itematm->atm_id = $atm->id;
+                    // Upload the file and store the file path in the database
+                    $itematm->itematm_image = $item[$i]->itemdefaultatm_image;
+                    $itematm->save();
+                    
+                    $penilaian = PenilaianDefaultAtm::where('itematm_id',$item[$i]->id)->get();
+                    
+                    
+                    for ($j=0; $j<$penilaian->count(); $j++) {
+                        $penilaianitematm = new PenilaianItemAtm;
+                        $penilaianitematm-> penilaianitematm_name = $penilaian[$j]->penilaiandefaultatm_name;
+                        $penilaianitematm-> penilaianitematm_score = 0;
+                        $penilaianitematm-> itematm_id = $itematm->id;
+                        $penilaianitematm-> indikator = $penilaian[$j]->penilaiandefaultatm_indikator;
+                        $penilaianitematm-> penilaianitematm_gambar = $penilaian[$j]->penilaiandefaultatm_gambar;
+                        $penilaianitematm->save();
+                    }
+                }
+                          
+                //REVISI
+
         return redirect('/');
     }
 
@@ -839,7 +903,7 @@ class PageController extends Controller
         $penilaianitematm = new PenilaianItemAtm;
         $penilaianitematm-> penilaianitematm_name = $request->input('penilaianitematm_name');
         $penilaianitematm-> penilaianitematm_score = $request->input('penilaianitematm_score');
-        //$penilaianitematm-> indikator = $request->input('indikator');
+        $penilaianitematm-> indikator = $request->input('indikator');
         
         if ($request->hasfile('penilaianitematm_gambar')){
 
@@ -885,7 +949,7 @@ class PageController extends Controller
         $barang = PenilaianItemAtm::find($id);
         $barang->penilaianitematm_name = $request->penilaianitematm_name;
         $barang->penilaianitematm_score = $request->penilaianitematm_score;
-        //$barang->indikator = $request->indikator;
+        $barang->indikator = $request->indikator;
         $barang->penilaianitematm_gambar = $barang->penilaianitematm_gambar;
         $barang->save();
 
@@ -939,7 +1003,7 @@ class PageController extends Controller
         $penilaianitemoutlet = new PenilaianItemOutlet;
         $penilaianitemoutlet-> penilaianitemoutlet_name = $request->input('penilaianitemoutlet_name');
         $penilaianitemoutlet-> penilaianitemoutlet_score = $request->input('penilaianitemoutlet_score');
-        //$penilaianitemoutlet-> indikator = $request->input('indikator');
+        $penilaianitemoutlet-> indikator = $request->input('indikator');
         
         if ($request->hasfile('penilaianitemoutlet_gambar')){
 
@@ -985,7 +1049,7 @@ class PageController extends Controller
         $barang = PenilaianItemOutlet::find($id);
         $barang->penilaianitemoutlet_name = $request->penilaianitemoutlet_name;
         $barang->penilaianitemoutlet_score = $request->penilaianitemoutlet_score;
-        //$barang->indikator = $request->indikator;
+        $barang->indikator = $request->indikator;
         $barang->penilaianitemoutlet_gambar = $barang->penilaianitemoutlet_gambar;
         $barang->save();
 

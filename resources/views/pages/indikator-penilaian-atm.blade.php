@@ -22,7 +22,7 @@
                 <tbody>
                 @foreach($penilaianitematm as $item)
                 <tr>
-                    <td>1</td>
+                    <td>{{ $loop->iteration }}</td>
                     <td><button class="indikator-btn" data-bs-toggle="modal" data-bs-target="#exampleModal{{$item->id}}"><img src="/uploads/penilaianitematm/{{$item->penilaianitematm_gambar}}" alt="Indikator" style="border-radius: 20%; overflow: hidden; width: 75px; height: 75px;"></button></td>
                     <td>{{$item->penilaianitematm_name}}</td>
                     <td>Terlihat jelas, Posisi hadap ATM (Monitor tidak terkena sinar matahari)</td>

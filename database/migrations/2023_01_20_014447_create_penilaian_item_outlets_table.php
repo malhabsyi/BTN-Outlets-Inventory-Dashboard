@@ -16,6 +16,7 @@ class CreatePenilaianItemOutletsTable extends Migration
         Schema::create('penilaian_item_outlets', function (Blueprint $table) {
             $table->id();
             $table->string('penilaianitemoutlet_name');
+            $table->string('indikator');
             $table->string('penilaianitemoutlet_score');
             $table->string('penilaianitemoutlet_gambar');
             $table->foreignId('itemoutlet_id');

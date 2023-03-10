@@ -21,6 +21,8 @@ class OutletBtn extends Model
         'outlet_note',
         'outlet_image',
     ];
+    public $timestamps = false;
+
 
     public function kantorcabang()
     {

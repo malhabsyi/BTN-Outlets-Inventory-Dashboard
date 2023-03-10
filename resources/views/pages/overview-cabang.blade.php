@@ -59,7 +59,8 @@
                             </div>
                             <div class="list-item list-middle">
                                 <h3>Jumlah ATM</h3>
-                                <h4>{{1}} Buah</h4>
+                                
+                                <h4>{{ $a = \App\Models\Atm::where('outlet_id', $outlet->id)->count() }} Buah</h4>
                             </div>
                             <div class="list-item">
                                 <h3>Status</h3>

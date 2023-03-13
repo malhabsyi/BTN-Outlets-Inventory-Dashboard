@@ -115,6 +115,8 @@
                         </div>
                         <div class="col-md-10">
                             <div class="notif-description mb-3">
+                                <a href="/overview-cabang/overview-outlet/{{$notif->id}}"style="color:inherit; text-decoration:none;">
+
                                 <h5>Jatuh Tempo</h5>
                                 <p><b>Outlet {{$notif->outlet_name}}</b> pada <b>{{$notif->kantorcabang->kantor_cabang_name}}</b> mengalami tenggat waktu pembayaran pada tanggal <b>{{$notif->outlet_deadline_tanggal}} 
                                     @if ($notif->outlet_deadline_bulan > 0)
@@ -123,6 +125,7 @@
                                         {{ $notif->outlet_deadline_bulan }}
                                     @endif
                                      {{$notif->outlet_deadline_tahun}}</b>.</p>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -136,6 +139,8 @@
                         </div>
                         <div class="col-md-10">
                             <div class="notif-description mb-3">
+                                <a href="/overview-cabang/overview-atm/{{$notif->id}}"style="color:inherit; text-decoration:none;">
+
                                 <h5>Jatuh Tempo</h5>
                                 <p><b>ATM {{$notif->atm_name}}</b> pada <b>{{$notif->kantorcabang->kantor_cabang_name}}</b> mengalami tenggat waktu pembayaran pada tanggal <b>{{$notif->atm_deadline_tanggal}} @if ($notif->atm_deadline_bulan > 0)
                                     {{ DateTime::createFromFormat('!m', $notif->atm_deadline_bulan)->format('F') }}
@@ -143,6 +148,7 @@
                                     {{ $notif->atm_deadline_bulan }}
                                 @endif
                                 {{$notif->atm_deadline_tahun}}</b>.</p>
+                                </a>
                             </div>
                         </div>
                     </div>

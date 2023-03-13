@@ -47,7 +47,7 @@
                 </textarea>
             </div>
         </div>
-        
+
         <div class="row my-3">
             <div class="p-1">
                 <button class="accordions" style="border-bottom 1px solid #cdcdcd">List ATM/CRM {{$outlet->outlet_name}}</button>
@@ -58,29 +58,42 @@
                     </div>
                     @foreach($atm as $o)
                     <div class="col-md-12 my-2">
-                        <div class="list-accordion">
-                            <div class="list-item">
-                                <h3>Nama</h3>
-                                <h4>{{$o->atm_name}}</h4>
+                        <div class="list-accordion no-flex">
+                            <div class="row">
+                                <div class="col-sm">
+                                    <div class="list-item">
+                                        <h3>Nama</h3>
+                                        <h4>{{$o->atm_name}}</h4>
+                                    </div>
+                                </div>
+                                <div class="col-sm">
+                                    <div class="list-item list-middle">
+                                        <h3>Jatuh Tempo</h3>
+                                        <h4>{{$outlet->outlet_deadline_tanggal." - ".$outlet->outlet_deadline_bulan." - ".$outlet->outlet_deadline_tahun}}</h4>
+                                    </div>
+                                </div>
+                                <div class="col-sm">
+                                    <div class="list-item">
+                                        <h3>Status</h3>
+                                        <h4>{{$outlet->outlet_status}}</h4>
+                                    </div>
+                                </div>
+                                <div class="col-1 mt-2">
+                                    <div class="item">
+                                        <a href="/overview-cabang/overview-atm/{{$o->id}}">
+                                            <img src="/img/next-page20@2x.png" alt="Next" width="40" height="40">
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="list-item list-middle">
-                                <h3>Jatuh Tempo</h3>
-                                <h4>{{$outlet->outlet_deadline_tanggal." - ".$outlet->outlet_deadline_bulan." - ".$outlet->outlet_deadline_tahun}}</h4>
-                            </div>
-                            <div class="list-item">
-                                <h3>Status</h3>
-                                <h4>{{$outlet->outlet_status}}</h4>
-                            </div>
-                            <div class="item">
-                                <a href="/overview-cabang/overview-atm/{{$o->id}}">
-                                    <img src="/img/next-page20@2x.png" class="mt-3" alt="Next" width="40" height="40">
-                                </a>
-                            </div>
+
+
+
                         </div>
                     </div>
                     @endforeach
                 </div>
-                
+
                 <button class="accordions">List Item Outlet {{$outlet->outlet_name}}</button>
                 <div class="panels">
                     <div class="row">
@@ -90,7 +103,7 @@
                     @foreach($itemoutlet as $item)
                     <div class="col-md-12 my-2">
                         <div class="list-accordion-item-outlet">
-                            <div class="item-outlet-box" >
+                            <div class="item-outlet-box">
                                 <img src="img/outletbtn.png" alt="Outlet" width="50" height="50">
                                 <div class="list-item-outlet list-middle" style="width:50%">
                                     <h3>Nama Item</h3>
@@ -100,7 +113,8 @@
                                     <a href="/indikator-penilaian-outlet/{{$item->id}}" style="color:inherit; text-decoration:none;">
                                         <h3>Indikator Penilaian</h3>
                                         <h4>{{$item->penilaianitemoutlet->count()}} Buah</h4>
-                                    </a> </div>
+                                    </a>
+                                </div>
                             </div>
                             <div class="list-item-outlet">
                                 <a href="/edit-item-outlet/{{$item->id}}">
@@ -125,7 +139,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="col-md-4">
         <div class="notification p-4">
             <div class="notification-header">
@@ -143,14 +157,16 @@
                         </div>
                         <div class="col-md-10">
                             <div class="notif-description mb-3">
+                                <a href="/overview-cabang/overview-outlet/{{$notif->id}}"style="color:inherit; text-decoration:none;">
                                 <h5>Jatuh Tempo</h5>
-                                <p><b>Outlet {{$notif->outlet_name}}</b> pada <b>{{$notif->kantorcabang->kantor_cabang_name}}</b> mengalami tenggat waktu pembayaran pada tanggal <b>{{$notif->outlet_deadline_tanggal}} 
-                                    @if ($notif->outlet_deadline_bulan > 0)
+                                <p><b>Outlet {{$notif->outlet_name}}</b> pada <b>{{$notif->kantorcabang->kantor_cabang_name}}</b> mengalami tenggat waktu pembayaran pada tanggal <b>{{$notif->outlet_deadline_tanggal}}
+                                        @if ($notif->outlet_deadline_bulan > 0)
                                         {{ DateTime::createFromFormat('!m', $notif->outlet_deadline_bulan)->format('F') }}
-                                    @else
+                                        @else
                                         {{ $notif->outlet_deadline_bulan }}
-                                    @endif
-                                     {{$notif->outlet_deadline_tahun}}</b>.</p>
+                                        @endif
+                                        {{$notif->outlet_deadline_tahun}}</b>.</p>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -164,13 +180,15 @@
                         </div>
                         <div class="col-md-10">
                             <div class="notif-description mb-3">
+                            <a href="/overview-cabang/overview-atm/{{$notif->id}}"style="color:inherit; text-decoration:none;">
+
                                 <h5>Jatuh Tempo</h5>
                                 <p><b>ATM {{$notif->atm_name}}</b> pada <b>{{$notif->kantorcabang->kantor_cabang_name}}</b> mengalami tenggat waktu pembayaran pada tanggal <b>{{$notif->atm_deadline_tanggal}} @if ($notif->atm_deadline_bulan > 0)
-                                    {{ DateTime::createFromFormat('!m', $notif->atm_deadline_bulan)->format('F') }}
-                                @else
-                                    {{ $notif->atm_deadline_bulan }}
-                                @endif
-                                 {{$notif->atm_deadline_tahun}}</b>.</p>
+                                        {{ DateTime::createFromFormat('!m', $notif->atm_deadline_bulan)->format('F') }}
+                                        @else
+                                        {{ $notif->atm_deadline_bulan }}
+                                        @endif
+                                        {{$notif->atm_deadline_tahun}}</b>.</p>
                             </div>
                         </div>
                     </div>
@@ -188,17 +206,17 @@
 <script>
     var acc = document.getElementsByClassName("accordions");
     var i;
-    
+
     for (i = 0; i < acc.length; i++) {
-      acc[i].addEventListener("click", function() {
-        this.classList.toggle("active-acc");
-        var panel = this.nextElementSibling;
-        if (panel.style.maxHeight) {
-          panel.style.maxHeight = null;
-        } else {
-          panel.style.maxHeight = panel.scrollHeight + "px";
-        } 
-      });
+        acc[i].addEventListener("click", function() {
+            this.classList.toggle("active-acc");
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+        });
     }
 </script>
 @endsection

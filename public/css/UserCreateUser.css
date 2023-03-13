@@ -2,6 +2,16 @@ body {
   margin: 0;
   line-height: normal;
 }
+
+
+.container-user {
+  position: relative;
+  left: 30px;
+}
+.form-group {
+  margin-top: 30px;
+}
+
 .popup-overlay {
   display: flex;
   flex-direction: column;
@@ -62,24 +72,24 @@ body {
   left: 166px;
 }
 .nama-user7 {
-  position: absolute;
+  /* position: absolute;
   top: 20px;
-  left: 0;
+  left: 0; */
   letter-spacing: -0.02em;
   color: var(--color-black);
   text-align: right;
 }
 .email-child1,
 .nama-user6 {
-  position: absolute;
+  /* position: absolute;
   top: 138px;
-  left: 166px;
+  left: 166px; */
   width: 892px;
   height: 69px;
 }
 .email-child1 {
-  top: 0;
-  left: 0;
+  /* top: 0;
+  left: 0; */
   border-radius: var(--br-3xs);
   background-color: var(--color-gray-1600);
   width: 726px;
@@ -152,9 +162,9 @@ body {
   width: 933px;
 }
 .role7 {
-  position: absolute;
+  /* position: absolute;
   top: 1px;
-  left: 0;
+  left: 0; */
   letter-spacing: -0.02em;
   text-align: right;
 }

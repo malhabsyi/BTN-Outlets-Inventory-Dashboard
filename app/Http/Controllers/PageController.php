@@ -200,7 +200,7 @@ class PageController extends Controller
 
         $breadcrumb = [
             'page-title' => 'Overview Outlet',
-            'sub-title' => 'Overview Outlet Nginden Semolo'
+            'sub-title' => 'Overview Outlet'.' '.$outlet->outlet_name,
         ];
         $atm = Atm::where('outlet_id',$outlet->id)->get();
         $countatm = $atm->count();
@@ -1004,21 +1004,10 @@ class PageController extends Controller
 
         return redirect()->back()->with('success', 'Data barang berhasil diubah');
     }
-    public function deleteIndikatorPenilaianAtm($id) {
-        $userlogin = Auth::user();
-        $penilaianitematm = PenilaianItemAtm::find($id);
-        
-
-            $destination = '../uploads/penilaianitematm/'.$penilaianitematm->penilaianitematm_gambar;
-            if (File::exists($destination)){
-                File::delete($destination);
-            }
-        $penilaianitematm->delete();
-        return redirect()->back()->with('success', 'Indikator penilaian ATM berhasil dihapus');
-        
-    }
-    public function destroyIndikatorPenilaianAtm(PenilaianItemAtm $entity)
+    public function destroyIndikatorPenilaianAtm($id)
     {
+        
+        $entity = PenilaianItemAtm::find($id);
         $entity->delete();
         return redirect()->back()->with('success', 'Entity deleted successfully.');
     }
@@ -1104,21 +1093,9 @@ class PageController extends Controller
 
         return redirect()->back()->with('success', 'Data barang berhasil diubah');
     }
-    public function deleteIndikatorPenilaianOutlet($id) {
-        $userlogin = Auth::user();
-        $penilaianitemoutlet = PenilaianItemOutlet::find($id);
-        
-
-            $destination = '../uploads/penilaianitemoutlet/'.$penilaianitemoutlet->penilaianitemoutlet_gambar;
-            if (File::exists($destination)){
-                File::delete($destination);
-            }
-        $penilaianitemoutlet->delete();
-        return redirect()->back()->with('success', 'Indikator penilaian ATM berhasil dihapus');
-        
-    }
-    public function destroyIndikatorPenilaianOutlet(PenilaianItemOutlet $entity)
+    public function destroyIndikatorPenilaianOutlet($id)
     {
+        $entity = PenilaianItemOutlet::find($id);
         $entity->delete();
         return redirect()->back()->with('success', 'Entity deleted successfully.');
     }

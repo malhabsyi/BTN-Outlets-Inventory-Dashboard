@@ -13,10 +13,15 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th></th>
+                        <th>Foto</th>
                         <th>Kelangkapan</th>
                         <th>Indikator</th>
-                        <th>Skor</th>
+                        <th>Skor
+                        <button id="sort-btn" class="btn btn-link">
+                            <i id="sort-icon" class="fa fa-sort"></i>
+                        </button>
+                        
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -25,7 +30,7 @@
                     <td>{{ $loop->iteration }}</td>
                     <td><button class="indikator-btn" data-bs-toggle="modal" data-bs-target="#exampleModal{{$item->id}}"><img src="/uploads/penilaianitemoutlet/{{$item->penilaianitemoutlet_gambar}}" alt="Indikator" style="border-radius: 20%; overflow: hidden; width: 75px; height: 75px;"></button></td>
                     <td>{{$item->penilaianitemoutlet_name}}</td>
-                    <td>Terlihat jelas, Posisi hadap ATM (Monitor tidak terkena sinar matahari)</td>
+                    <td>{{$item->indikator}}</td>
                     <td>{{$item->penilaianitemoutlet_score}}</td>
                 </tr>
 
@@ -118,5 +123,44 @@
     }
         
     })
+</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        // Sort table by score in descending order on page load
+        var asc = true;
+        $('#sort-btn').click(function() {
+            asc = !asc;
+            var sortIcon = $('#sort-icon');
+            sortIcon.removeClass('fa-sort');
+            sortIcon.removeClass('fa-sort-down');
+            sortIcon.removeClass('fa-sort-up');
+            if (asc) {
+                sortIcon.addClass('fa-sort-up');
+                sortTable('asc');
+            } else {
+                sortIcon.addClass('fa-sort-down');
+                sortTable('desc');
+            }
+        });
+
+        function sortTable(sortOrder) {
+            var $table = $('table');
+            var rows = $table.find('tbody > tr').get();
+            rows.sort(function(a, b) {
+                var scoreA = parseInt($(a).find('td:nth-child(5)').text());
+                var scoreB = parseInt($(b).find('td:nth-child(5)').text());
+                if (sortOrder === 'asc') {
+                    return scoreA - scoreB;
+                } else {
+                    return scoreB - scoreA;
+                }
+            });
+            $.each(rows, function(index, row) {
+                $table.children('tbody').append(row);
+            });
+        }
+    });
 </script>
 @endsection

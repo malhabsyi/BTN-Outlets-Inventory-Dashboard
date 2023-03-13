@@ -62,7 +62,7 @@ Route::group(['middleware' =>['auth','cekrole:superadmin']],function(){
     Route::get("/edit-indikator-penilaian-atm/{id}", [PageController::class, 'editIndikatorPenilaianAtm']);
     Route::put("/update-indikator-penilaian-atm/{id}", [PageController::class, 'updateIndikatorPenilaianAtm']);
     Route::post("/store-indikator-penilaian-atm/{id}", [PageController::class, 'storeIndikatorPenilaianAtm']);
-    Route::put("/delete-indikator-penilaian-atm/{id}", [PageController::class, 'deleteIndikatorPenilaianAtm']);
+    Route::put("/delete-indikator-penilaian-atm/{id}", [PageController::class, 'destroyIndikatorPenilaianAtm']);
    
 
 
@@ -81,10 +81,10 @@ Route::group(['middleware' =>['auth','cekrole:superadmin']],function(){
 
 
     //DASHBOARD PENILAIAN ITEM OUTLET
-    Route::get("/edit-indikator-penilaian-outlet/{id}", [PageController::class, 'editIndikatorPenilaianoutlet']);
-    Route::put("/update-indikator-penilaian-outlet/{id}", [PageController::class, 'updateIndikatorPenilaianoutlet']);
-    Route::post("/store-indikator-penilaian-outlet/{id}", [PageController::class, 'storeIndikatorPenilaianoutlet']);
-    Route::put("/delete-indikator-penilaian-outlet/{id}", [PageController::class, 'deleteIndikatorPenilaianoutlet']);
+    Route::get("/edit-indikator-penilaian-outlet/{id}", [PageController::class, 'editIndikatorPenilaianOutlet']);
+    Route::put("/update-indikator-penilaian-outlet/{id}", [PageController::class, 'updateIndikatorPenilaianOutlet']);
+    Route::post("/store-indikator-penilaian-outlet/{id}", [PageController::class, 'storeIndikatorPenilaianOutlet']);
+    Route::put("/delete-indikator-penilaian-outlet/{id}", [PageController::class, 'destroyIndikatorPenilaianOutlet']);
    
     //DASHBOARD ADMIN
     Route::get('/akun',[UserController::class, 'index'])->name('akun');
@@ -108,7 +108,7 @@ Route::group(['middleware' =>['auth','cekrole:superadmin']],function(){
 });
 Route::group(['middleware' =>['auth','cekrole:superadmin,admin']],function(){
 
-    
+
     //KANTOR CABANG
     Route::get("/edit-kantor-cabang/{id}", [PageController::class, 'editKantorCabang']);
     Route::put("/update-kantor-cabang/{id}",[PageController::class, 'updateKantorCabang']);

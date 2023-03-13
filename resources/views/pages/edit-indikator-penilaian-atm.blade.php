@@ -18,6 +18,7 @@
                 </thead>
                 <tbody>
                     @foreach($penilaianitematms as $penilaianitematm)
+                    
                     <tr>
                         <form action="/update-indikator-penilaian-atm/{{ $penilaianitematm->id }}" method="POST">
                             @csrf
@@ -35,20 +36,24 @@
                                 <input type="text" name="indikator" class="form-control" value="{{ $penilaianitematm->indikator }}" placeholder="Masukan Indikator">
                             </td>
                             <td>
-                                <input type="number" name="penilaianitematm_score" min="0" class="form-control" value="{{ $penilaianitematm->penilaianitematm_score }}">
+                                <input type="number" name="penilaianitematm_score" min="0" max="3" class="form-control" value="{{ $penilaianitematm->penilaianitematm_score }}">
                             </td>
                             <td>
                                 <button type="submit" class="btn btn-primary">Simpan</button>
-                                <form method="POST" action="/delete-indikator-penilaian-atm/{{ $penilaianitematm->id }}">
+                                </form>
+                                
+                            </td>
+                            <td>
+                            <form action="/delete-indikator-penilaian-atm/{{ $penilaianitematm->id }}" method="POST" >
                                     @csrf
                                     @method('PUT')
                                     <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">Hapus</button>
                                 </form>
                             </td>
-                        </form>
+        
                     </tr>
                     @endforeach
-
+                    
                     <tr>
                     <form action="/store-indikator-penilaian-atm/{{ $itematm->id }}" method="POST" enctype="multipart/form-data">
                             @csrf
@@ -72,7 +77,7 @@
                                 <input type="text" name="indikator" class="form-control"  placeholder="Masukan Indikator" required>
                             </td>
                             <td>
-                                <input type="number" name="penilaianitematm_score" min="0" class="form-control" required>
+                                <input type="number" name="penilaianitematm_score" min="0" max="3" class="form-control" required>
                             </td>
                             <td>
                                 <button type="submit" class="btn btn-primary">Simpan</button>

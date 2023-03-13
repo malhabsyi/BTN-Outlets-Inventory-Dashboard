@@ -35,17 +35,21 @@
                                 <input type="text" name="indikator" class="form-control" value="{{ $penilaianitemoutlet->indikator }}" placeholder="Masukan Indikator">
                             </td>
                             <td>
-                                <input type="number" name="penilaianitemoutlet_score" min="0" class="form-control" value="{{ $penilaianitemoutlet->penilaianitemoutlet_score }}">
+                                <input type="number" name="penilaianitemoutlet_score" min="0" max="3" class="form-control" value="{{ $penilaianitemoutlet->penilaianitemoutlet_score }}">
                             </td>
                             <td>
                                 <button type="submit" class="btn btn-primary">Simpan</button>
-                                <form method="POST" action="/delete-indikator-penilaian-outlet/{{ $penilaianitemoutlet->id }}">
+                                </form>
+                            </td>
+                            <td>
+                            <form method="POST" action="/delete-indikator-penilaian-outlet/{{ $penilaianitemoutlet->id }}">
                                     @csrf
                                     @method('PUT')
                                     <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">Hapus</button>
                                 </form>
                             </td>
-                        </form>
+    
+                        
                     </tr>
                     @endforeach
 
@@ -72,7 +76,7 @@
                                 <input type="text" name="indikator" class="form-control"  placeholder="Masukan Indikator" required>
                             </td>
                             <td>
-                                <input type="number" name="penilaianitemoutlet_score" min="0" class="form-control" required>
+                                <input type="number" name="penilaianitemoutlet_score" min="0" max="3" class="form-control" required>
                             </td>
                             <td>
                                 <button type="submit" class="btn btn-primary">Simpan</button>

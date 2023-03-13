@@ -7,11 +7,7 @@
     <div class="col-md-8">
         <div class="row mt-4">
             <div class="col-md-4">
-                <form action="">
-                    <div class="form-group">
-                        <input type="text" class="form-control search-input" placeholder="Search ...">
-                    </div>
-                </form>
+
             </div>
             <div class="col-md-8">
                 <h3 class="list-cabang-title mt-1">List Kantor Cabang</h3>

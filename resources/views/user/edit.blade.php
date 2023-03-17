@@ -33,7 +33,7 @@
                     <div class="password6">
                         <!-- <div class="email-item"></div>
                     <b class="elang1">*************</b> -->
-                        <input type="text" class="email-item" placeholder="" name="password"   value="{{$password}}">
+                        <input type="text" class="email-item" placeholder="" name="password"   value="{{$user->password}}">
                     </div>
                     <b class="nama-user3">Password</b>
                 </div>

@@ -11,12 +11,17 @@
             </div>
 
             <div class="py-5">
+                
                 <div class="item-detail first-item mb-3">
                     <div>
                         <h5>Nama Outlet</h5>
                         <p>{{$outlet->outlet_name}}</p>
                     </div>
                     <a href="/edit-outlet/{{$outlet->id}}" class="item-link">Edit</a>
+                </div>
+                <div class="item-detail mb-4">
+                    <h5>Kode Outlet</h5>
+                    <p>{{$outlet->outlet_number}}</p>
                 </div>
                 <div class="item-detail mb-4">
                     <h5>Kantor Cabang</h5>
@@ -30,6 +35,7 @@
                     <h5>Alamat</h5>
                     <p>{{$outlet->outlet_location}}</p>
                 </div>
+            
                 <div class="item-detail mb-4">
                     <h5>Status</h5>
                     <p>{{$outlet->outlet_status}}</p>

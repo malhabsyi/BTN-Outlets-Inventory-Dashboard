@@ -23,6 +23,7 @@
                         <h3>Kantor Cabang</h3>
                         <h4>{{$o->kantor_cabang_name}}</h4>
                     </div>
+                    
                     <div class="list list-middle">
                         <h3>Jumlah Outlet</h3>
                         <h4>{{$o->outlet->count()}} Outlet</h4>

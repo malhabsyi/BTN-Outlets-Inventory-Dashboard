@@ -37,7 +37,12 @@
             <div class="row mb-4">
                 <label for="" class="col-md-2 text-end fw-bold py-1">Status</label>
                 <div class="col-md-6">
-                    <input type="text" class=" form-input" value="{{$atm->atm_status}}" placeholder="Masukan Status ATM" readonly>
+                    <select id="status_atm" name="atm_status" class="form-input" onchange="showHideJatuhTempo()">
+                        <option value="{{$atm->atm_status}}">{{$atm->atm_status}}</option>
+                        @foreach($status as $s)
+                            <option value="{{ $s }}">{{ $s }}</option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
             <div class="row mb-4">
@@ -86,4 +91,22 @@
     </div>
 </div>
 
+@endsection
+@section('page-scripts')
+<script>
+function showHideJatuhTempo() {
+  var status = document.getElementById("status_atm").value;
+  var jatuhTempoField = document.getElementById("jatuh_tempo");
+  var jatuhTempoLabel = document.getElementById("jatuh_tempo_label");
+  if (status === "milik perusahaan") {
+    jatuhTempoField.style.display = "none";
+    jatuhTempoLabel.style.display = "none";
+    jatuhTempoField.value = "0000-00-00";
+  } else {
+    jatuhTempoField.style.display = "block";
+    jatuhTempoLabel.style.display = "block";
+    jatuhTempoField.value = "";
+  }
+}
+</script>
 @endsection

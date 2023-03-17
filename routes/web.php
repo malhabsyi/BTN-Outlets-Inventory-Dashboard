@@ -135,4 +135,8 @@ Route::group(['middleware' =>['auth','cekrole:superadmin,admin']],function(){
     Route::get("/indikator-penilaian-outlet/{id}", [PageController::class, 'indikatorPenilaianoutlet']);
 
 
+    //REVISI
+    Route::post('/import-outlets', [PageController::class, 'importOutlets']);
+    Route::post('/import-atms', [PageController::class, 'importAtms']);
+
 });

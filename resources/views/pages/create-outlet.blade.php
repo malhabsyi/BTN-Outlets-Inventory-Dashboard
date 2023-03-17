@@ -32,6 +32,12 @@
                 </div>
             </div>
             <div class="row mb-4">
+                <label for="" class="col-md-2 text-end fw-bold py-1">Outlet Number</label>
+                <div class="col-md-6">
+                    <input type="text" class=" form-input" name="outlet_number" placeholder="Masukan Nomor Outlet" required>
+                </div>
+            </div>
+            <div class="row mb-4">
                 <label for="" class="col-md-2 text-end fw-bold py-1">Alamat</label>
                 <div class="col-md-6">
                     <textarea type="text" name="outlet_location" class=" form-input" placeholder="Masukan Alamat Outlet" rows="6" required></textarea>

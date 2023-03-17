@@ -92,7 +92,7 @@ class UserController extends Controller
             'user_image'=> 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/2048px-Circle-icons-profile.svg.png'
             
         ];
-        $data['password'] = bcrypt($data['password']);
+        
         
 
         
@@ -122,9 +122,9 @@ class UserController extends Controller
             ];
             
             $user = User::find($id);
-            $password = bcrypt($user->password);
             
-            return view('user.edit',compact('password','user','breadcrumb','title','kantorcabang','atmnotif','outletnotif','userlogin'));
+            
+            return view('user.edit',compact('user','breadcrumb','title','kantorcabang','atmnotif','outletnotif','userlogin'));
         } else {
             return view('user.index');
         }

@@ -20,6 +20,10 @@
 
                 </div>
                 <div class="item-detail mb-4">
+                    <h5>Kode Cabang</h5>
+                    <p>2</p>
+                </div>
+                <div class="item-detail mb-4">
                     <h5>Alamat</h5>
                     <p>{{$kantorcabang->kantor_cabang_location}}</p>
                 </div>

@@ -97,6 +97,7 @@
                         </div>
                     </div>
                 </div>
+                
             </div>
             <div class="col-md-6">
                 <div class="card-overview p-5">
@@ -110,7 +111,7 @@
                                     <div class="legend-1"></div>
                                 </div>
                                 <div>
-                                    <div>Belum Dibayar</div>
+                                    <div>Dekat Jatuh Tempo</div>
                                     <div>{{ $persenbelumdibayar }}%</div>
                                 </div>
                             </div>
@@ -119,7 +120,7 @@
                                     <div class="bullet-legend-dua"></div>
                                 </div>
                                 <div>
-                                    <div>Sudah Dibayar</div>
+                                    <div>Belum Jatuh Tempo</div>
                                     <div>{{ $persensudahdibayar }}%</div>
                                 </div>
                             </div>
@@ -168,7 +169,9 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
+                    @php $count = 0 @endphp
                     @foreach ($outletnotif as $notif)
+                        @if ($count < 3)
                     <a href="/overview-cabang/overview-outlet/{{$notif->id}}"style="color:inherit; text-decoration:none;">
 
                     
@@ -192,8 +195,15 @@
                         </div>
                     </div>
                     </a>
+                    @php $count++ @endphp
+                    @else
+                        @break
+                    @endif
                     @endforeach
+
+                    @php $count = 0 @endphp
                     @foreach ($atmnotif as $notif)
+                    @if ($count < 3)
                     <a href="/overview-cabang/overview-atm/{{$notif->id}}"style="color:inherit; text-decoration:none;">
 
                     
@@ -216,6 +226,10 @@
                         </div>
                     </div>
                     </a>
+                    @php $count++ @endphp
+                    @else
+                        @break
+                    @endif
                     @endforeach
 
 

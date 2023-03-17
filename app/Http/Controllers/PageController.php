@@ -217,6 +217,7 @@ class PageController extends Controller
         $outlet-> outlet_location = $request->input('outlet_location');
         $outlet-> outlet_note = $request->input('outlet_note');
         $outlet-> outlet_sbh = $request->input('outlet_sbh');
+        $outlet-> outlet_number = $request->input('outlet_number');
         
         $date = $request->input('date');
         
@@ -224,6 +225,7 @@ class PageController extends Controller
         $outlet->outlet_deadline_tahun = $dateParts[0];
         $outlet->outlet_deadline_bulan = $dateParts[1];
         $outlet->outlet_deadline_tanggal = $dateParts[2];
+
         $kantorcabang= KantorCabang::all();
         $outlet->kantor_cabang_id = $request->input('kantor_cabang_id');
 
@@ -257,7 +259,8 @@ class PageController extends Controller
             $outlet-> outlet_note = $request->input('outlet_note');
         }
         $outlet->outlet_status = $request->input('outlet_status');
-
+        $outlet->outlet_number = $request->input('outlet_number');
+        
             
         $outlet->kantor_cabang_id = $request->input('kantor_cabang_id'); 
         if($request->input('date')==NULL){
@@ -267,14 +270,18 @@ class PageController extends Controller
             $outlet->outlet_deadline_tanggal = 0;
     
         }
-        else{
+        if ($request->input('outlet_deadline_tahun')!=NULL){
+            $outlet->outlet_deadline_tahun = $request->input('outlet_deadline_tahun');
+            $outlet->outlet_deadline_bulan = $request->input('outlet_deadline_bulan');
+            $outlet->outlet_deadline_tanggal = $request->input('outlet_deadline_tanggal');
+        }
+        if($request->input('date'!=NULL)){
             $date = $request->input('date');
         
             $dateParts = explode('-', $date);
             $outlet->outlet_deadline_tahun = $dateParts[0];
             $outlet->outlet_deadline_bulan = $dateParts[1];
             $outlet->outlet_deadline_tanggal = $dateParts[2];
-
         }
 
         $outlet-> outlet_sbh = $request->input('outlet_sbh');
@@ -288,6 +295,9 @@ class PageController extends Controller
             $filename = $outlet->outlet_name.'.'.$extension;
             $file-> move('uploads/outlet/',$filename);
             $outlet->outlet_image = $filename;
+        }
+        else{
+            $outlet->outlet_image = $request->input('outlet_image');
         }
         $outlet->save();
         //REVISI
@@ -325,6 +335,100 @@ class PageController extends Controller
         
         return redirect('/');
     }
+
+
+
+
+
+    public function importOutlets(Request $request) {
+        $file = $request->file('csv_file');
+    
+        // Check if the file is a CSV file
+        if ($file->getClientOriginalExtension() != 'csv') {
+            return back()->with('error', 'Invalid file type. Please upload a CSV file.');
+        }
+    
+        // Open the CSV file and loop through each row
+        if (($handle = fopen($file, 'r')) !== FALSE) {
+            while (($data = fgetcsv($handle, 1000, ',')) !== FALSE) {
+                // Call the storeOutlet() function for each row
+                $outlet = new \Illuminate\Http\Request();
+                $outlet->merge([
+                    'outlet_name' => $data[0],
+                    'outlet_location' => $data[1],
+                    'outlet_sbh' => $data[2],
+                    'outlet_image' => $data[3],
+                    'outlet_deadline_tahun' => $data[4],
+                    'outlet_deadline_bulan' => $data[5],
+                    'outlet_deadline_tanggal' => $data[6],
+                    'outlet_note' => $data[7],
+                    'outlet_status' => $data[8],
+                    'kantor_cabang_id' => $data[9],
+                    'outlet_number' => $data[10],
+                    
+                ]);
+                
+                $this->storeOutlet($outlet);
+            }
+            fclose($handle);
+        }
+    
+        return redirect('/')->with('success', 'Outlets imported successfully.');
+    }
+
+    public function importAtms(Request $request) {
+        $file = $request->file('csv_file');
+    
+        // Check if the file is a CSV file
+        if ($file->getClientOriginalExtension() != 'csv') {
+            return back()->with('error', 'Invalid file type. Please upload a CSV file.');
+        }
+    
+        // Open the CSV file and loop through each row
+        if (($handle = fopen($file, 'r')) !== FALSE) {
+            while (($data = fgetcsv($handle, 1000, ',')) !== FALSE) {
+                // Call the storeAtm() function for each row
+                $atm = new \Illuminate\Http\Request();
+                $outlet_id = OutletBtn::where('outlet_name',$data[11])->get();
+
+
+                
+                $atm->merge([
+                    'atm_name' => $data[0],
+                    'atm_location' => $data[1],
+                    'atm_deadline_tahun' => $data[2],
+                    'atm_deadline_bulan' => $data[3],
+                    'atm_deadline_tanggal' => $data[4],
+                    'atm_note' => $data[5],
+                    'atm_machine_id' => $data[6],
+                    'atm_image' => $data[7],
+                    'atm_status' => $data[8],
+                    'atm_jenis' => $data[9],
+                    'kantor_cabang_id' => $data[10],
+                    'outlet_id' => count($outlet_id) > 0 ? $outlet_id[0]->id : null,
+                    
+                ]);
+                $this->storeAtm($atm);
+            }
+            fclose($handle);
+        }
+    
+        return redirect('/')->with('success', 'Atms imported successfully.');
+    }
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public function kantorCabang()
     {
@@ -616,8 +720,9 @@ class PageController extends Controller
                 $outletname = $atm->outlet->outlet_name;
                 
             };
+            $status = ['sewa','milik perusahaan'];
             
-            return view('pages.edit-atm', compact('outletname','atmdeadline','atm','title','breadcrumb','atmnotif','outletnotif','userlogin'));    
+            return view('pages.edit-atm', compact('status','outletname','atmdeadline','atm','title','breadcrumb','atmnotif','outletnotif','userlogin'));    
         } else {
             return view('page.overview');
         }
@@ -653,6 +758,8 @@ class PageController extends Controller
         else{
             $atm->atm_image = "C:\Users\muhammad\btnapp-master\public\img\upload-image.svg";
         }
+        $atm->atm_status = $request->input('atm_status');
+
 
         $atm->save();
         return redirect('/');

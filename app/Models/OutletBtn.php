@@ -14,6 +14,7 @@ class OutletBtn extends Model
         'outlet_sbh',
         'outlet_status',
         'outlet_location',
+        'outlet_number',
         'outlet_deadline_tanggal',
         'outlet_deadline_bulan',
         'outlet_deadline_tahun',

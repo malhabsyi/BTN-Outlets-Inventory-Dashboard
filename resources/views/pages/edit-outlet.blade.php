@@ -16,6 +16,12 @@
                 </div>
             </div>
             <div class="row mb-4">
+                <label for="" class="col-md-2 text-end fw-bold py-1">Kode Outlet</label>
+                <div class="col-md-6">
+                    <input type="text" class=" form-input" name="outlet_number" value="{{$outlet->outlet_number}}" placeholder="Kode Outlet" required>
+                </div>
+            </div>
+            <div class="row mb-4">
                 <label for="" class="col-md-2 text-end fw-bold py-1">Kantor Cabang</label>
                 <div class="col-md-6">
                     <select id="kantor_cabang" name="kantor_cabang_id" class="form-input" required>
